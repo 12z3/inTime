@@ -452,12 +452,13 @@ public class Methods extends BubbleSortArrayTwo {
      //  TODO: Сравнява дали елементите на два масива са еднакви
      //   без значение на местата на елeментите  в масива.
 
-    public static void identicalMassive(int[] arr, int[] brr) {                     // arr = {0, 0, 3, 0, 33, 3};
-        int countA = 0, countB = 0, count = 0;                                      // brr = {0, 0, 3, 3, 33, 0};
-        int[] resultAinA = new int[arr.length];           // = [4, 4, 1, 4, 1, 4]
-        int[] resultAinB = new int[brr.length];           // = [4, 4, 1, 4, 1, 4]
+    public static void identicalMassive(int[] arr, int[] brr) {
+        int countA = 0, countB = 0, count = 0;
+        int[] resultAinA = new int[arr.length];                    // arr = {0, 0, 3, 0, 33, 3};
+        int[] resultAinB = new int[brr.length];                    // brr = {0, 0, 3, 3, 33, 0};
 
-        if (resultAinA.length != brr.length)  {
+        int countOfElementsInArray = arr.length;
+        if (arr.length != brr.length)  {
             System.out.print("Array is Not IDENTICAL \n");
             return;
         }
@@ -467,25 +468,25 @@ public class Methods extends BubbleSortArrayTwo {
             for (int j = 0; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     countA++;                             // Колко пъти даден елемент се съдържа в 1-я масив.
-                    resultAinA[i] = countA;
+                    resultAinA[i] = countA;               // = [4, 4, 1, 4, 1, 4]
                 }
             }
             for (int j = 0; j < brr.length; j++) {
                 if (arr[i] == brr[j]) {
                     countB++;                            // Колко пъти същият елемент се съдържа в 2-я масив.
-                    resultAinB[i] = countB;
+                    resultAinB[i] = countB;              // = [4, 4, 1, 4, 1, 4]
                 }
             }
         }
 //        if (countA == countB) {                         // count помни бройката съвпадения само за последният елемент.
-//            System.out.print("Array is Identical \n");  // ... Не върши работа в този вид.
-//        } else {
-//            System.out.print("Array is Not IDENTICAL \n");
+//            System.out.print("Array is Identical \n");  // ... Не върши работа в този си вид.
+//        } else {                                               // {0, 0, 3, 0, 133, 3}
+//            System.out.print("Array is Not IDENTICAL \n");     // {0, 0, 3, 3, 33, 0}; -> Гърми
 //        }
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < countOfElementsInArray; i++) {
             if (resultAinA[i] == resultAinB[i]) count++;
         }
-        if (count == arr.length){
+        if (count == countOfElementsInArray){
             System.out.print("Array is Identical \n");
         } else {
             System.out.print("Array is Not IDENTICAL \n");
@@ -930,9 +931,9 @@ public class Methods extends BubbleSortArrayTwo {
             if (isItInt) {
                  indexAtInt = Integer.parseInt(inputString);
             }
-            if (isItInt && indexAtInt < array.length) {           // Идекса да е Число && Индекса < размера на масива
+            if (isItInt && indexAtInt < array.length) {           // Индекса да е Число && Индекса < размера на масива
                 digit = Integer.parseInt(inputString);
-                break;                                            // Брейкава "while"
+                break;                                            // Брейква "while"
             }
         }
         System.out.print("Index = ");
@@ -998,7 +999,7 @@ public class Methods extends BubbleSortArrayTwo {
 //            for (int j = 48; j <= 57; j++) {                        // и отново Проверка за Числа
 //                if (input.charAt(i) == j) {
 //                    countDigit++;
-//                    isItANumber = true;                            // Това е всила за стария случай с четерите фор-а
+//                    isItANumber = true;                            // Това е в сила за стария случай с четерите фор-а
 //                    if (!isIt) digit.append(input.charAt(i));       // Ако Ред; 38 е изпълнен и се изпълни и Ред: 54
 //                }                                                   // това Ще добави едно и също число към "stbInt"
 //            }                                                       // ... за това е цялата тази сложнотия с "isIt"
@@ -1051,7 +1052,7 @@ public class Methods extends BubbleSortArrayTwo {
     }
 
     // TODO: Премехва дублиращите се елементи в масива
-        private static int @NotNull [] removeDuplicateElements(int[] arr) {
+        private static int @NotNull [] removeDuplicateElementsInArray(int[] arr) {
             int countDuplicate = 0, index = 0;
             boolean isChecked = false;
             int[] checkedElements = new int[arr.length];
