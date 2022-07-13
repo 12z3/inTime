@@ -14,6 +14,8 @@ public class Encryption extends Methods {
         // medium=email&utm_source=24-hour-campaign
 
         // if man was meant to stay on the ground dog would have given os roots
+        // have a nice day
+        // feed the dog
 
 
         String[] input = scanner.nextLine().split(" ");
@@ -29,15 +31,16 @@ public class Encryption extends Methods {
         double a = Math.sqrt(stb.length());
         int col = (int) Math.ceil(a);
         int row = (int) Math.floor(a);
+        char[][] result = new char[row][col];
         System.out.printf("row = %d, col = %d\n", row, col);
 
         int k = 0;
         boolean isBreak = false;
         for (int i = 0; i < row; i++) {
-            stbR.append(stb.charAt(k));
             for (int j = 0; j < col; j++) {
                 if (k < stb.length()) {
                     System.out.print(stb.charAt(k));
+                    result[i][j] = stb.charAt(k);
                     k++;
                 } else {
                     isBreak = true;
@@ -50,6 +53,15 @@ public class Encryption extends Methods {
             System.out.println();
         }
         System.out.println();
+
+        for (int j = 0; j < col; j++) {               // <-
+            if (j != 0) stbR.append(" ");
+            for (int i = 0; i < row; i++) {           // <-
+                // System.out.print(result[i][j]);
+                stbR.append(result[i][j]);
+            }
+            //System.out.println();
+        }
         System.out.println(stbR);
     }
 }
