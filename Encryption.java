@@ -18,6 +18,7 @@ public class Encryption extends Methods {
         // feed the dog
 
 
+        // encrypting
         String[] input = scanner.nextLine().split(" ");
         StringBuilder stb = new StringBuilder();
         StringBuilder stbR = new StringBuilder();
@@ -33,6 +34,7 @@ public class Encryption extends Methods {
         int row = (int) Math.floor(length);
 
         char[][] result = new char[row][col];
+        System.out.printf("row = %d, col = %d\n", row, col);
 
         int k = 0;
         boolean isBreak = false;
@@ -47,17 +49,40 @@ public class Encryption extends Methods {
                     break;
                 }
             }
-            if (isBreak) {
-                break;
-            }
+            if (isBreak) break;
             System.out.println();
         }
         for (int j = 0; j < col; j++) {               // <- Обхожда масива колона по колона, а не ред по ред.
             if (j != 0) stbR.append(" ");             // Т.е: За всеки ред от дадена колона....
             for (int i = 0; i < row; i++) {           // <-
-                stbR.append(result[i][j]);
+                if (result[i][j] != 0) stbR.append(result[i][j]);
             }
         }
-        System.out.println(stbR);
+        System.out.println();
+        System.out.println(stbR + "\n");
+
+
+        // decrypting
+        StringBuilder stbD = new StringBuilder();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (k < stb.length()) {
+                    result[i][j] = stbR.charAt(k);
+                    k++;
+                } else {
+                    isBreak = true;
+                    break;
+                }
+            }
+            if (isBreak) break;
+            System.out.println();
+        }
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (result[i][j] != 0) stbD.append(result[i][j]);
+            }
+        }
+        System.out.print(stbD);
     }
 }
