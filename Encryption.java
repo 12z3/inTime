@@ -31,6 +31,7 @@ public class Encryption extends Methods {
         double length = Math.sqrt(stb.length());
         int col = (int) Math.ceil(length);
         int row = (int) Math.floor(length);
+
         char[][] result = new char[row][col];
 
         int k = 0;
@@ -51,7 +52,7 @@ public class Encryption extends Methods {
             }
             System.out.println();
         }
-        for (int j = 0; j < col; j++) {               // <- Обхожда масива колона по колона, ане ред по ред.
+        for (int j = 0; j < col; j++) {               // <- Обхожда масива колона по колона, а не ред по ред.
             if (j != 0) stbR.append(" ");             // Т.е: За всеки ред от дадена колона....
             for (int i = 0; i < row; i++) {           // <-
                 stbR.append(result[i][j]);
