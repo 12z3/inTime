@@ -21,7 +21,7 @@ public class Encryption extends Methods {
         // encrypting
         String[] input = scanner.nextLine().split(" ");
         StringBuilder stb = new StringBuilder();
-        StringBuilder stbR = new StringBuilder();
+        StringBuilder encrypt = new StringBuilder();
 
         for (int i = 0; i < input.length; i++) {
             if (!(input[i].equals(" "))) {
@@ -29,9 +29,9 @@ public class Encryption extends Methods {
             }
         }
         System.out.println(stb);
-        double length = Math.sqrt(stb.length());
-        int col = (int) Math.ceil(length);
-        int row = (int) Math.floor(length);
+        double inputLength = Math.sqrt(stb.length());
+        int col = (int) Math.ceil(inputLength);
+        int row = (int) Math.floor(inputLength);
 
         char[][] result = new char[row][col];
         System.out.printf("row = %d, col = %d\n", row, col);
@@ -52,22 +52,22 @@ public class Encryption extends Methods {
             if (isBreak) break;
             System.out.println();
         }
-        for (int j = 0; j < col; j++) {               // <- Обхожда масива колона по колона, а не ред по ред.
-            if (j != 0) stbR.append(" ");             // Т.е: За всеки ред от дадена колона....
-            for (int i = 0; i < row; i++) {           // <-
-                if (result[i][j] != 0) stbR.append(result[i][j]);
+        for (int j = 0; j < col; j++) {                  // <- Обхожда масива колона по колона, а не ред по ред.
+            if (j != 0) encrypt.append(" ");             // Т.е: За всеки ред от дадена колона....
+            for (int i = 0; i < row; i++) {              // <-
+                if (result[i][j] != 0) encrypt.append(result[i][j]);
             }
         }
         System.out.println();
-        System.out.println(stbR + "\n");
+        System.out.print("encrypt = " + encrypt + "\n");
 
 
         // decrypting
-        StringBuilder stbD = new StringBuilder();
+        StringBuilder decrypt = new StringBuilder();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (k < stb.length()) {
-                    result[i][j] = stbR.charAt(k);
+                    result[i][j] = encrypt.charAt(k);
                     k++;
                 } else {
                     isBreak = true;
@@ -75,14 +75,13 @@ public class Encryption extends Methods {
                 }
             }
             if (isBreak) break;
-            System.out.println();
         }
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (result[i][j] != 0) stbD.append(result[i][j]);
+                if (result[i][j] != 0) decrypt.append(result[i][j]);
             }
         }
-        System.out.print(stbD);
+        System.out.print("decrypt = " + decrypt);
     }
 }
