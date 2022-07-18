@@ -506,7 +506,6 @@ public class Methods extends BubbleSortArrayTwo {
             System.out.print("Array is Not IDENTICAL \n");
             return false;
         }
-
         for (int i = 0; i < a.length; i++) {
             isMacH[i] = false;
             for (int j = 0; j < a.length; j++) {
@@ -515,7 +514,6 @@ public class Methods extends BubbleSortArrayTwo {
                 }
             }
         }
-
         for (boolean el: isMacH){
             if (el){count++;}
                 if (count == 12){
@@ -524,7 +522,6 @@ public class Methods extends BubbleSortArrayTwo {
                 isIdentical = false;
             }
         }
-
         if (isIdentical){
             System.out.print("Array is Identical \n");
         } else {
