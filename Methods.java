@@ -1096,6 +1096,15 @@ public class Methods extends BubbleSortArrayTwo {
             return arr;
         }
 
+    public static char[] stringToCharMassive(String text){
+        char[] charsMassive = new char[text.length()];
+
+        for (int i = 0; i < charsMassive.length; i++) {
+            charsMassive[i] = text.charAt(i);
+        }
+        return charsMassive;
+    }
+
 }
 
 
