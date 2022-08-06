@@ -450,7 +450,7 @@ public class Methods extends BubbleSortArrayTwo {
 
 
      //  TODO: Сравнява дали елементите на два масива са еднакви
-     //   без значение на местата на елeментите  в масива.
+     //   без значение на местата на елeментите в масива.
 
     public static void identicalMassive(int[] arr, int[] brr) {
         int countA = 0, countB = 0, count = 0;
@@ -516,7 +516,7 @@ public class Methods extends BubbleSortArrayTwo {
         }
         for (boolean el: isMacH){
             if (el){count++;}
-                if (count == 12){
+                if (count == 12){                                         // ?... някакво Магическо Чисълце
                     isIdentical = true;
             } else {
                 isIdentical = false;
@@ -636,16 +636,16 @@ public class Methods extends BubbleSortArrayTwo {
         } else {
 
             //  TODO: <- Дебъгни го. Интересно Е!
-            for (int chartOfWord = 0; chartOfWord < aWord.length(); chartOfWord++) {
+            for (int chartIndexOfWord = 0; chartIndexOfWord < aWord.length(); chartIndexOfWord++) {
                 // isItDifferenceChar = false;                       // Поне един char да е различен.....
-                if (!(aWord.charAt(chartOfWord) == bWord.charAt(chartOfWord))) {
+                if (!(aWord.charAt(chartIndexOfWord) == bWord.charAt(chartIndexOfWord))) {
                     countDifferenceChar++;
                     isItDifferenceChar = true;
 
                     tempIndex++;
-                    indexI = chartOfWord;
+                    indexI = chartIndexOfWord;
                     differenceCharS[indexI] = bWord.charAt(indexI);   //Пази Чара който е различен на същият Индекс.
-                    temp[chartOfWord] = bWord.charAt(indexI);
+                    temp[chartIndexOfWord] = bWord.charAt(indexI);
 
                     //if (some == 1){
                     // TODO: -> System.out.printf("There are %d different char. %n", countAnotherChar);
@@ -960,7 +960,7 @@ public class Methods extends BubbleSortArrayTwo {
         String input = scanner.nextLine();
 
         for (int i = 0; i < input.length(); i++) {
-            for (int j = 0; j <= 47; j++) {                      // Проверка за Литерали
+            for (int j = 0; j <= 47; j++) {                        // Проверка за Литерали
                 if (input.charAt(i) == j) {
                     countSymbol++;
                     isItASymbol = true;
@@ -1096,6 +1096,7 @@ public class Methods extends BubbleSortArrayTwo {
             return arr;
         }
 
+    // TODO: String to char[]
     public static char[] stringToCharMassive(String text){
         char[] charsMassive = new char[text.length()];
 
