@@ -640,7 +640,7 @@ public class Methods extends BubbleSortArrayTwo {
                 // isItDifferenceChar = false;                       // Поне един char да е различен.....
                 if (!(aWord.charAt(chartIndexOfWord) == bWord.charAt(chartIndexOfWord))) {
                     countDifferenceChar++;
-                    isItDifferenceChar = true;
+                    isItDifferenceChar = true;                        // Никъде не си "нулира" стойноста ?
 
                     tempIndex++;
                     indexI = chartIndexOfWord;
