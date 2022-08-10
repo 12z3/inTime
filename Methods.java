@@ -636,16 +636,16 @@ public class Methods extends BubbleSortArrayTwo {
         } else {
 
             //  TODO: <- Дебъгни го. Интересно Е!
-            for (int chartIndexOfWord = 0; chartIndexOfWord < aWord.length(); chartIndexOfWord++) {
+            for (int chartIndex = 0; chartIndex < aWord.length(); chartIndex++) {
                 // isItDifferenceChar = false;                       // Поне един char да е различен.....
-                if (!(aWord.charAt(chartIndexOfWord) == bWord.charAt(chartIndexOfWord))) {
+                if (!(aWord.charAt(chartIndex) == bWord.charAt(chartIndex))) {
                     countDifferenceChar++;
                     isItDifferenceChar = true;                        // Никъде не си "нулира" стойноста ?
 
                     tempIndex++;
-                    indexI = chartIndexOfWord;
+                    indexI = chartIndex;
                     differenceCharS[indexI] = bWord.charAt(indexI);   //Пази Чара който е различен на същият Индекс.
-                    temp[chartIndexOfWord] = bWord.charAt(indexI);
+                    temp[chartIndex] = bWord.charAt(indexI);          // СПАГЕТИ НА ПОРАЗИЯ...
 
                     //if (some == 1){
                     // TODO: -> System.out.printf("There are %d different char. %n", countAnotherChar);
