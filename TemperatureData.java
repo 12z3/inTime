@@ -11,7 +11,7 @@ public class TemperatureData extends Methods {
         2. Сортира паралелно двата масива (температура и имена на месеци) във възходящ ред.
         3. Принтира.
 
-        -> Оправи масива за Февруари месец. Дните трябвада са 28. - It's DONE.
+        -> Оправи масива за Февруари месец. Дните трябва да са 28. - It's DONE.
     */
 
     private static int getNumberOfDaysInMonth(int month) {
@@ -75,7 +75,6 @@ public class TemperatureData extends Methods {
                 int tempValue =  temperatureArray[month - 1][day - 1];
                 if (tempValue < minT) {
                     minT = tempValue;
-                    minMap.put(month, day);
                     minDay = day;
                     minMonth = month;
                 }
@@ -96,7 +95,6 @@ public class TemperatureData extends Methods {
                 int tempValue =  temperatureArray[month - 1][day - 1];
                 if (tempValue > maxT) {
                     maxT = tempValue;
-                    maxMap.put(month, day);
                     maxDay = day;
                     maxMonth = month;
                 }
@@ -144,7 +142,7 @@ public class TemperatureData extends Methods {
                 int tempValue =  temperatureArray[month - 1][day - 1];               // Обхожда масива от 1-я елемент.
                 if (tempValue > maxT) {
                     maxT = tempValue;
-                    montHName[month - 1] = monthName;                 // Запълва давата масива: montHName[]  и temp[].
+                    montHName[month - 1] = monthName;                 // Запълва двата масива: montHName[]  и temp[].
                     temperature[month - 1] = maxT;
                 }
             }
@@ -169,7 +167,7 @@ public class TemperatureData extends Methods {
                 int tempValue =  temperatureArray[month - 1][day - 1];
                 if (tempValue < minT) {                                  // Обхожда масива от 1-я елемент.
                     minT = tempValue;
-                    montHName[month - 1] = monthName;           // Запълва давата масива: montHName[]  и temp[].
+                    montHName[month - 1] = monthName;           // Запълва двата масива: montHName[]  и temp[].
                     temperature[month - 1] = minT; // За всеки месец намира min T и запълва двата масива [месеца] и [Т]
                 }                                  // ... На края разполагам с два масива: [minT] и [monthName]
             }
