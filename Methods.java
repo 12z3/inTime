@@ -80,7 +80,7 @@ public class Methods extends BubbleSortArrayTwo {
          Date time =new Date();
          */
         LocalDateTime localTime = LocalDateTime.now();
-        //    TODO:    String result = (localTime < 18) ? "Good DAY. " : "Good NIGHT.";
+        //  TODO:    String result = (localTime < 18) ? "Good DAY. " : "Good NIGHT.";
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a  c 'ден'   HH:hh:ss ч ");
         String formattedDateTime = localTime.format(formatDate);
 
@@ -203,6 +203,19 @@ public class Methods extends BubbleSortArrayTwo {
             System.out.printf("%d ", f2);
         }
         return f2;
+    }
+
+    public static int aFibonacci1(int n) {
+        int f = 0, f1 = 1, f2 = 1;
+
+        System.out.printf("%d %d ", f1, f2);
+        for (int i = 0; i < n - 2; i++) {
+            f = f1 + f2;
+            f1 = f2;
+            f2 = f;
+            System.out.printf("%d ", f);
+        }
+        return f;
     }
 
     /**
@@ -645,7 +658,8 @@ public class Methods extends BubbleSortArrayTwo {
                     tempIndex++;
                     indexI = chartIndex;
                     differenceCharS[indexI] = bWord.charAt(indexI);   //Пази Чара който е различен на същият Индекс.
-                    temp[chartIndex] = bWord.charAt(indexI);          // СПАГЕТИ НА ПОРАЗИЯ...
+                   // temp[chartIndex] = bWord.charAt(indexI);          // СПАГЕТИ НА ПОРАЗИЯ...
+                    temp[indexI] = bWord.charAt(chartIndex);
 
                     //if (some == 1){
                     // TODO: -> System.out.printf("There are %d different char. %n", countAnotherChar);
@@ -676,7 +690,7 @@ public class Methods extends BubbleSortArrayTwo {
         return isItMatch;
     }
 
-    public static void print2DArray(int[][] arr) {
+    public static <T> void print2DArray(int[][] arr) {
         for (int row = 0; row < arr.length; row++) {
             for (int coll = 0; coll < arr[row].length; coll++) {
                 System.out.print(arr[row][coll] + "");
@@ -1104,6 +1118,21 @@ public class Methods extends BubbleSortArrayTwo {
             charsMassive[i] = text.charAt(i);
         }
         return charsMassive;
+    }
+
+    public static <T> void print1DMassive(T[] massive){
+        for (int i = 0; i < massive.length; i++) {
+            System.out.print(massive[i] + " ");
+        }
+    }
+
+    public static  <T> void print2DMassive(T[][] massive){
+        for (int rows = 0; rows < massive.length; rows++) {
+            for (int cols = 0; cols < massive[rows].length; cols++) {
+                System.out.print(massive[rows][cols] + " ");
+            }
+            System.out.println();
+        }
     }
 
 }
