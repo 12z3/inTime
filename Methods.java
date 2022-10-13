@@ -81,7 +81,7 @@ public class Methods extends BubbleSortArrayTwo {
          */
         LocalDateTime localTime = LocalDateTime.now();
         //  TODO:    String result = (localTime < 18) ? "Good DAY. " : "Good NIGHT.";
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a  c 'ден'   HH:hh:ss ч ");
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a c 'ден:' HH:hh:ss ч ");
         String formattedDateTime = localTime.format(formatDate);
 
         System.out.println(formattedDateTime);
@@ -355,7 +355,7 @@ public class Methods extends BubbleSortArrayTwo {
             }
             arr = temp;                                  // Изчиства от памета старият масив "arr"  <-- !!!
         }
-                                                         // Отзад напред до "index" включително <--
+        // Отзад напред до "index" включително <--
         for (int i = size; i > index; i--) {            // Премества елементи на ДЯСНО от "index" с една позиция.
             arr[i] = arr[i - 1];                         // Последният става = на предпоследният и т.н. до index вкл.
         }
@@ -462,8 +462,8 @@ public class Methods extends BubbleSortArrayTwo {
     }
 
 
-     //  TODO: Сравнява дали елементите на два масива са еднакви
-     //   без значение на местата на елeментите в масива.
+    //  TODO: Сравнява дали елементите на два масива са еднакви
+    //   без значение на местата на елeментите в масива.
 
     public static void identicalMassive(int[] arr, int[] brr) {
         int countA = 0, countB = 0, count = 0;
@@ -471,13 +471,14 @@ public class Methods extends BubbleSortArrayTwo {
         int[] resultAinB = new int[brr.length];                    // brr = {0, 0, 3, 3, 33, 0};
 
         int countOfElementsInArray = arr.length;
-        if (arr.length != brr.length)  {
+        if (arr.length != brr.length) {
             System.out.print("Array is Not IDENTICAL \n");
             return;
         }
 
         for (int i = 0; i < arr.length; i++) {
-            countA = 0; countB = 0;                       // За всеки елемент брояча се нулира.
+            countA = 0;
+            countB = 0;                       // За всеки елемент брояча се нулира.
             for (int j = 0; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
                     countA++;                             // Колко пъти даден елемент се съдържа в 1-я масив.
@@ -499,7 +500,7 @@ public class Methods extends BubbleSortArrayTwo {
         for (int i = 0; i < countOfElementsInArray; i++) {
             if (resultAinA[i] == resultAinB[i]) count++;
         }
-        if (count == countOfElementsInArray){
+        if (count == countOfElementsInArray) {
             System.out.print("Array is Identical \n");
         } else {
             System.out.print("Array is Not IDENTICAL \n");
@@ -515,7 +516,7 @@ public class Methods extends BubbleSortArrayTwo {
         boolean isIdentical = false;
         int count = 0;
 
-        if (a.length != b.length){
+        if (a.length != b.length) {
             System.out.print("Array is Not IDENTICAL \n");
             return false;
         }
@@ -527,15 +528,17 @@ public class Methods extends BubbleSortArrayTwo {
                 }
             }
         }
-        for (boolean el: isMacH){
-            if (el){count++;}
-                if (count == 12){                                         // ?... някакво Магическо Чисълце
-                    isIdentical = true;
+        for (boolean el : isMacH) {
+            if (el) {
+                count++;
+            }
+            if (count == 12) {                                         // ?... някакво Магическо Чисълце
+                isIdentical = true;
             } else {
                 isIdentical = false;
             }
         }
-        if (isIdentical){
+        if (isIdentical) {
             System.out.print("Array is Identical \n");
         } else {
             System.out.print("Array is Not IDENTICAL \n");
@@ -658,7 +661,7 @@ public class Methods extends BubbleSortArrayTwo {
                     tempIndex++;
                     indexI = chartIndex;
                     differenceCharS[indexI] = bWord.charAt(indexI);   //Пази Чара който е различен на същият Индекс.
-                   // temp[chartIndex] = bWord.charAt(indexI);          // СПАГЕТИ НА ПОРАЗИЯ...
+                    // temp[chartIndex] = bWord.charAt(indexI);          // СПАГЕТИ НА ПОРАЗИЯ...
                     temp[indexI] = bWord.charAt(chartIndex);
 
                     //if (some == 1){
@@ -694,7 +697,7 @@ public class Methods extends BubbleSortArrayTwo {
         for (int row = 0; row < arr.length; row++) {
             for (int coll = 0; coll < arr[row].length; coll++) {
                 System.out.print(arr[row][coll] + "");
-                if (coll < arr[row].length - 1){
+                if (coll < arr[row].length - 1) {
                     System.out.print(", ");
                 }
             }
@@ -705,12 +708,32 @@ public class Methods extends BubbleSortArrayTwo {
 
     public static boolean compareTwoIntArray(int[] a, int[] b) {
         boolean isMatch = false;
-        int count = 0;
+        if ((a.length != b.length)) return false;
+
         for (int i = 0; i < a.length; i++) {
-            if ((a.length == b.length) && a[i] == b[i]) {
-                isMatch = true;
-            } else {
-                count++;
+            isMatch = false;
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    isMatch = true;
+                    break;
+                }
+            }
+        }
+        return isMatch;
+    }
+
+    public static <T> boolean compareTwoIntLists(List<T> a, List<T> b) {
+        boolean isMatch = false;
+
+        if ((a.size() != b.size())) return false;
+
+        for (int i = 0; i < a.size(); i++) {
+            isMatch = false;
+            for (int j = 0; j < b.size(); j++) {
+                if (a.get(i) == b.get(j)) {
+                    isMatch = true;
+                    break;
+                }
             }
         }
         return isMatch;
@@ -819,7 +842,7 @@ public class Methods extends BubbleSortArrayTwo {
             if (!isMach) {                              // Ако няма съвпадение на индексите то:
                 randomIndex = arrayOfIndexes[i];  // Това ще се изпълни тогава и само тогава когато "!isMach"
                 arrayOfElements[i] = massive[randomIndex]; // Ще вземе стойността от "randomIndex" -
-                                                                      // - при условие, че "!isMach"
+                // - при условие, че "!isMach"
                 stb.append(arrayOfElements[i]);
                 thisDigit = Long.parseLong(String.valueOf(stb));
                 i++;                                  // "i" се променя само тогава когато isMatch = false.
@@ -881,9 +904,9 @@ public class Methods extends BubbleSortArrayTwo {
     }
 
     public static void printAllInfo(String x, int[] arrayOfIndexes,
-                                     int[] arrayOfElements, int countsDuplicate,
-                                     ArrayList<Integer> tmpIndexes,
-                                     ArrayList<Integer> tmpElement) {
+                                    int[] arrayOfElements, int countsDuplicate,
+                                    ArrayList<Integer> tmpIndexes,
+                                    ArrayList<Integer> tmpElement) {
         System.out.println();
         System.out.println(x);
         System.out.print("Indexes is: ");
@@ -920,7 +943,7 @@ public class Methods extends BubbleSortArrayTwo {
             inputString = (scanner.nextLine());
             stb.append(inputString);
 
-            while (inputString.isEmpty()){
+            while (inputString.isEmpty()) {
                 System.out.print("Index must be in " + 0 + " to " + (array.length - 1) + ": ");
                 inputString = (scanner.nextLine());
             }
@@ -940,7 +963,7 @@ public class Methods extends BubbleSortArrayTwo {
             }
             printInfo(isItInt, stb, inputString);
             if (isItInt) {
-                 indexAtInt = Integer.parseInt(inputString);
+                indexAtInt = Integer.parseInt(inputString);
             }
             if (isItInt && indexAtInt < array.length) {           // Индекса да е Число && Индекса < размера на масива
                 digit = Integer.parseInt(inputString);
@@ -997,7 +1020,7 @@ public class Methods extends BubbleSortArrayTwo {
                 }
             }
         }
-    // Отпадна. проверката за числа и Символи я прави заедно с литералите. няма смисъл да се викат два еднакви фор-а
+        // Отпадна. проверката за числа и Символи я прави заедно с литералите. няма смисъл да се викат два еднакви фор-а
 
 //        for (int i = 0; i < input.length(); i++) {
 //            for (int j = 58; j <= 127; j++) {                       // Проверка за Символи
@@ -1035,7 +1058,7 @@ public class Methods extends BubbleSortArrayTwo {
         } else if (countSymbol != 0) {
             System.out.print(
                     "This is a TEXT!\nSymbol is: " + symbol + ";\n");
-        }else if (countLiteral != 0) {
+        } else if (countLiteral != 0) {
             System.out.print(
                     "This is a TEXT!\nLetter is: " + literal + ";\n");
         } else if (countDigit != 0) {
@@ -1063,38 +1086,38 @@ public class Methods extends BubbleSortArrayTwo {
     }
 
     // TODO: Премехва дублиращите се елементи в масива
-        private static int @NotNull [] removeDuplicateElementsInArray(int[] arr) {
-            int countDuplicate = 0, index = 0;
-            boolean isChecked = false;
-            int[] checkedElements = new int[arr.length];
+    private static int @NotNull [] removeDuplicateElementsInArray(int[] arr) {
+        int countDuplicate = 0, index = 0;
+        boolean isChecked = false;
+        int[] checkedElements = new int[arr.length];
 
-            for (int i = 0; i < arr.length; i++) {
-                isChecked = false;
+        for (int i = 0; i < arr.length; i++) {
+            isChecked = false;
 
-                if (i != 0) {
-                    for (int j = 0; j < checkedElements.length; j++) {
-                        if (arr[i] == checkedElements[j]) {                            // Търси съвпадения
-                            isChecked = true;
-                            break;
-                        }
-                    }
-                }
-                if (isChecked) continue;                                              // arr = {1, 2, 1, 1, 2, 2, 3, 4}
-                checkedElements[i] = arr[i];                                          // tmp = {1, 2, 0, 0, 0, 0, 3, 4}
-
-                for (int j = i + 1; j < arr.length; j++) {             // Не стига до тук ако е проверяван елемента
-                    if (arr[i] == arr[j]) {                    // и има съвпадение -> if (arr[i] == checkedElements[j])
-                        countDuplicate++;
+            if (i != 0) {
+                for (int j = 0; j < checkedElements.length; j++) {
+                    if (arr[i] == checkedElements[j]) {                            // Търси съвпадения
+                        isChecked = true;
+                        break;
                     }
                 }
             }
-            int mach = 0;
-            int[] tmp = new int[arr.length - countDuplicate];
+            if (isChecked) continue;                                              // arr = {1, 2, 1, 1, 2, 2, 3, 4}
+            checkedElements[i] = arr[i];                                          // tmp = {1, 2, 0, 0, 0, 0, 3, 4}
 
-            for (int i = 0; i < checkedElements.length; i++) {
-                if (checkedElements[i] != 0) {
-                    tmp[index++] = checkedElements[i];
+            for (int j = i + 1; j < arr.length; j++) {             // Не стига до тук ако е проверяван елемента
+                if (arr[i] == arr[j]) {                    // и има съвпадение -> if (arr[i] == checkedElements[j])
+                    countDuplicate++;
                 }
+            }
+        }
+        int mach = 0;
+        int[] tmp = new int[arr.length - countDuplicate];
+
+        for (int i = 0; i < checkedElements.length; i++) {
+            if (checkedElements[i] != 0) {
+                tmp[index++] = checkedElements[i];
+            }
 //            for (int i = 0; i < arr.length; i++) {
 //                mach = 1;
 //                for (int j = i + 1; j < arr.length; j++) {
@@ -1105,13 +1128,13 @@ public class Methods extends BubbleSortArrayTwo {
 //                if (mach == 1) {
 //                    tmp[index++] = arr[i];                 // Записва елементи с Индекси -> 1, 4, 5
 //                }                                          // Първо добавя елемента в tmp[l], след това увеличава л с 1.
-            }
-            arr = tmp;
-            return arr;
         }
+        arr = tmp;
+        return arr;
+    }
 
     // TODO: String to char[]
-    public static char[] stringToCharMassive(String text){
+    public static char[] stringToCharMassive(String text) {
         char[] charsMassive = new char[text.length()];
 
         for (int i = 0; i < charsMassive.length; i++) {
@@ -1120,13 +1143,13 @@ public class Methods extends BubbleSortArrayTwo {
         return charsMassive;
     }
 
-    public static <T> void print1DMassive(T[] massive){
+    public static <T> void print1DMassive(T[] massive) {
         for (int i = 0; i < massive.length; i++) {
             System.out.print(massive[i] + " ");
         }
     }
 
-    public static  <T> void print2DMassive(T[][] massive){
+    public static <T> void print2DMassive(T[][] massive) {
         for (int rows = 0; rows < massive.length; rows++) {
             for (int cols = 0; cols < massive[rows].length; cols++) {
                 System.out.print(massive[rows][cols] + " ");
