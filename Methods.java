@@ -708,6 +708,7 @@ public class Methods extends BubbleSortArrayTwo {
 
     public static boolean compareTwoIntArray(int[] a, int[] b) {
         boolean isMatch = false;
+
         if ((a.length != b.length)) return false;
 
         for (int i = 0; i < a.length; i++) {
