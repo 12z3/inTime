@@ -1,6 +1,6 @@
 package training;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static hackerRank.GetRandom.printArrayList;
+
 
 
 /*
@@ -38,7 +38,7 @@ import static hackerRank.GetRandom.printArrayList;
  */
 
 
-public class Methods extends BubbleSortArrayTwo {
+public class Methods{
 
     /**
      * d = см
@@ -708,9 +708,7 @@ public class Methods extends BubbleSortArrayTwo {
 
     public static boolean compareTwoIntArray(int[] a, int[] b) {
         boolean isMatch = false;
-
         if ((a.length != b.length)) return false;
-
         for (int i = 0; i < a.length; i++) {
             isMatch = false;
             for (int j = 0; j < b.length; j++) {
@@ -723,20 +721,22 @@ public class Methods extends BubbleSortArrayTwo {
         return isMatch;
     }
 
-    public static <T> boolean compareTwoIntLists(List<T> a, List<T> b) {
+    public static <T> boolean isASameElementsOfLists(List<T> a, List<T> b) {
         boolean isMatch = false;
-
+        T element = null;
         if ((a.size() != b.size())) return false;
-
         for (int i = 0; i < a.size(); i++) {
             isMatch = false;
             for (int j = 0; j < b.size(); j++) {
-                if (a.get(i) == b.get(j)) {
+                if (a.get(i).equals(b.get(j))) {
                     isMatch = true;
+                    element = a.get(i);
                     break;
                 }
             }
+            if (isMatch) break;
         }
+        System.out.print(element + " ");
         return isMatch;
     }
 
@@ -918,10 +918,10 @@ public class Methods extends BubbleSortArrayTwo {
         System.out.println("Count of Duplicate indexes = " + countsDuplicate);
 
         System.out.print("Duplicate indexes is: ");
-        printArrayList(tmpIndexes);
+       // printArrayList(tmpIndexes);
         //System.out.println(Arrays.toString(tmpIndexes.toArray()));                // How to print ArrayList <-
         System.out.print("Duplicate element on these indexes: ");
-        printArrayList(tmpElement);
+        //printArrayList(tmpElement);
         System.out.print("Number is = ");
     }
 
@@ -1087,7 +1087,7 @@ public class Methods extends BubbleSortArrayTwo {
     }
 
     // TODO: Премехва дублиращите се елементи в масива
-    private static int @NotNull [] removeDuplicateElementsInArray(int[] arr) {
+    private static int[] removeDuplicateElementsInArray(int[] arr) {
         int countDuplicate = 0, index = 0;
         boolean isChecked = false;
         int[] checkedElements = new int[arr.length];
