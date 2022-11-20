@@ -1158,7 +1158,46 @@ public class Methods{
             System.out.println();
         }
     }
+    // TODO: "searchDuplicates" използва: "findDuplicated" и "isChecked".
+    public static void searchDuplicates(int[] arr) {
+        int[] matchesArr = new int[arr.length];
 
+        LOOP:
+        for (int i = 0; i < arr.length; i++) {
+            int matches, el1 = arr[i], index = i + 1;
+
+            if (i == 0) {
+                matches = findDuplicated(arr, el1, index);
+            } else {
+                if (!isChecked(arr, arr[i], i)) {
+                    matches = findDuplicated(arr, el1, index);
+                } else continue LOOP;
+            }
+            matchesArr[i] = matches;
+            System.out.printf("Element %d = finds %d times %n", el1, matches);
+        }
+
+        for (int el : matchesArr) System.out.print(el + " ");
+    }
+
+    private static int findDuplicated(int[] arr, int el1, int index) {
+        int matches = 1;
+        for (int i = index; i < arr.length; i++) {
+            int el2 = arr[i];
+            if (el1 == el2) {
+                matches++;
+            }
+            index++;
+        }
+        return matches;
+    }
+
+    private static boolean isChecked(int[] arr, int el, int index) {
+        for (int j = index - 1; j >= 0; j--) {
+            if (el == arr[j]) return true;
+        }
+        return false;
+    }
 }
 
 
