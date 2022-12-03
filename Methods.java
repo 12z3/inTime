@@ -75,7 +75,7 @@ public class Methods{
      * System.out.println(dt); -> Sun Jun 13 16:13:23 EEST 2021.
      */
 
-    public static void timeAndData() {
+    public static String timeAndData() {
         /*
          Date time =new Date();
          */
@@ -85,6 +85,7 @@ public class Methods{
         String formattedDateTime = localTime.format(formatDate);
 
         System.out.println(formattedDateTime);
+        return formattedDateTime;
     }
 
     /*
@@ -1197,6 +1198,18 @@ public class Methods{
             if (el == arr[j]) return true;
         }
         return false;
+    }
+
+    public static void getEndTime(long start) {
+        Date dateEnd = new Date();
+        long end = dateEnd.getTime();
+        System.out.println();
+        System.out.println((end - start) + " ms");
+    }
+
+    public static long getStartTime() {
+        Date dateStart = new Date();
+        return dateStart.getTime();
     }
 }
 
