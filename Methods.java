@@ -1087,7 +1087,7 @@ public class Methods{
         return array;
     }
 
-    // TODO: Премехва дублиращите се елементи в масива
+    // TODO: Премехва дублиращите се елементи в масива - направи го с Map.
     private static int[] removeDuplicateElementsInArray(int[] arr) {
         int countDuplicate = 0, index = 0;
         boolean isChecked = false;
