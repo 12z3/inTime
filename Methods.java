@@ -1104,8 +1104,8 @@ public class Methods{
                     }
                 }
             }
-            if (isChecked) continue;                                              // arr = {1, 2, 1, 1, 2, 2, 3, 4}
-            checkedElements[i] = arr[i];                                          // tmp = {1, 2, 0, 0, 0, 0, 3, 4}
+            if (isChecked) continue;                                      // arr = {1, 2, 1, 1, 2, 2, 3, 4}
+            checkedElements[i] = arr[i];                                  // checkedElements = {1, 2, 0, 0, 0, 0, 3, 4}
 
             for (int j = i + 1; j < arr.length; j++) {             // Не стига до тук ако е проверяван елемента
                 if (arr[i] == arr[j]) {                    // и има съвпадение -> if (arr[i] == checkedElements[j])
@@ -1200,6 +1200,10 @@ public class Methods{
         return false;
     }
 
+    public static long getStartTime() {
+        Date dateStart = new Date();
+        return dateStart.getTime();
+    }
     public static void getEndTime(long start) {
         Date dateEnd = new Date();
         long end = dateEnd.getTime();
@@ -1207,9 +1211,27 @@ public class Methods{
         System.out.println((end - start) + " ms");
     }
 
-    public static long getStartTime() {
-        Date dateStart = new Date();
-        return dateStart.getTime();
+    public static String whatTimeToTotoIs(LocalDateTime timeOfToto) {
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a c 'ден:' HH:hh:ss ч ");;
+        LocalDateTime now = LocalDateTime.now();
+
+        int count = 0;
+        int days = timeOfToto.getDayOfMonth() - now.getDayOfMonth();
+        while (days != 0){
+            days--;
+            count++;
+        }
+        long time1 = now.getHour();
+        long time2 = timeOfToto.getHour();
+
+        long min1 = now.getMinute();
+        long min2 = timeOfToto.getMinute();
+
+        return ("The Day is: " + timeOfToto.format(formatDate) + "\n"
+                +"Reminders: "
+                + count + " days (" + now.getDayOfWeek() + ") "
+                + (Math.abs((time1 - time2))) + " hours " + "and "
+                + (Math.abs(min1 - min2)) + " minutes");
     }
 }
 
