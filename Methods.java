@@ -694,18 +694,39 @@ public class Methods{
         return isItMatch;
     }
 
-    public static <T> void print2DArray(int[][] arr) {
-        for (int row = 0; row < arr.length; row++) {
-            for (int coll = 0; coll < arr[row].length; coll++) {
-                System.out.print(arr[row][coll] + "");
-                if (coll < arr[row].length - 1) {
-                    System.out.print(", ");
-                }
-            }
-            System.out.println();
-        }
-    }
+    public static boolean compareTwoWords(String wordA, String wordB) {
+        boolean isNoMatch = true;
 
+
+        Map<Integer, Character> different = new LinkedHashMap<>();
+
+        Stack<Character> aWord = new Stack<>();
+        Stack<Character> bWord = new Stack<>();
+
+        if (wordA.length() != wordB.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < wordA.length(); i++) {
+            aWord.add(wordA.charAt(i));
+            bWord.add(wordB.charAt(i));
+        }
+
+        for (int i = 0; i < wordA.length(); i++) {
+            isNoMatch = true;
+            if (aWord.get(i) != bWord.get(i)) {
+                isNoMatch = false;
+                different.put(i,aWord.get(i));
+            }
+        }
+
+        if (!isNoMatch) System.out.println("Different are: ");
+        for (Map.Entry<Integer, Character> el : different.entrySet()){
+            System.out.printf("Index: %d, Char: %c%n", el.getKey(), el.getValue());
+        }
+
+        return isNoMatch;
+    }
 
     public static boolean compareTwoIntArray(int[] a, int[] b) {
         boolean isMatch = false;
@@ -1211,7 +1232,7 @@ public class Methods{
         System.out.println((end - start) + " ms");
     }
 
-    public static String whatTimeToTotoIs(LocalDateTime timeOfToto) {
+    public static String whenTotoTimeIs(LocalDateTime timeOfToto) {
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a c 'ден:' HH:hh:ss ч ");;
         LocalDateTime now = LocalDateTime.now();
 
