@@ -1,7 +1,6 @@
 package training;
 
 
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -38,7 +37,7 @@ import java.util.*;
  */
 
 
-public class Methods{
+public class Methods {
 
     /**
      * d = см
@@ -716,16 +715,46 @@ public class Methods{
             isNoMatch = true;
             if (aWord.get(i) != bWord.get(i)) {
                 isNoMatch = false;
-                different.put(i,aWord.get(i));
+                different.put(i, aWord.get(i));
             }
         }
 
         if (!isNoMatch) System.out.println("Different are: ");
-        for (Map.Entry<Integer, Character> el : different.entrySet()){
+        for (Map.Entry<Integer, Character> el : different.entrySet()) {
             System.out.printf("Index: %d, Char: %c%n", el.getKey(), el.getValue());
         }
 
         return isNoMatch;
+    }
+
+    public static void wordSearchInText(String text, String word) {
+        int count = 0, index = 0, fromIndex = 0, j = 0;
+
+        while (j < text.length()) {
+            index = text.indexOf(word, fromIndex);
+            if (index != -1) {
+                fromIndex = index + 1;
+                count++;
+            }
+            j++;
+        }
+        System.out.printf
+                ("Word '%s' is matched %d times in text: %s%n",
+                        word, count, text);
+    }
+
+    public static void charSearchInText(String text, char x) {
+        int count = 0, index = 0, fromIndex = 0, j = 0;
+        while (j < text.length()) {
+            index = text.indexOf(x, fromIndex);
+            if (index != -1) {
+                fromIndex = index + 1;
+                count++;
+            }
+            j++;
+        }
+        System.out.printf("Char '%c' is matched %d times in text: %s%n",
+                x, count, text);
     }
 
     public static boolean compareTwoIntArray(int[] a, int[] b) {
@@ -940,7 +969,7 @@ public class Methods{
         System.out.println("Count of Duplicate indexes = " + countsDuplicate);
 
         System.out.print("Duplicate indexes is: ");
-       // printArrayList(tmpIndexes);
+        // printArrayList(tmpIndexes);
         //System.out.println(Arrays.toString(tmpIndexes.toArray()));                // How to print ArrayList <-
         System.out.print("Duplicate element on these indexes: ");
         //printArrayList(tmpElement);
@@ -1180,6 +1209,7 @@ public class Methods{
             System.out.println();
         }
     }
+
     // TODO: "searchDuplicates" използва: "findDuplicated" и "isChecked".
     public static void searchDuplicates(int[] arr) {
         int[] matchesArr = new int[arr.length];
@@ -1225,6 +1255,7 @@ public class Methods{
         Date dateStart = new Date();
         return dateStart.getTime();
     }
+
     public static void getEndTime(long start) {
         Date dateEnd = new Date();
         long end = dateEnd.getTime();
@@ -1233,12 +1264,13 @@ public class Methods{
     }
 
     public static String whenTotoTimeIs(LocalDateTime timeOfToto) {
-        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a c 'ден:' HH:hh:ss ч ");;
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd MMM yyyy, E - a c 'ден:' HH:hh:ss ч ");
+        ;
         LocalDateTime now = LocalDateTime.now();
 
         int count = 0;
         int days = timeOfToto.getDayOfMonth() - now.getDayOfMonth();
-        while (days != 0){
+        while (days != 0) {
             days--;
             count++;
         }
@@ -1249,7 +1281,7 @@ public class Methods{
         long min2 = timeOfToto.getMinute();
 
         return ("The Day is: " + timeOfToto.format(formatDate) + "\n"
-                +"Reminders: "
+                + "Reminders: "
                 + count + " days (" + now.getDayOfWeek() + ") "
                 + (Math.abs((time1 - time2))) + " hours " + "and "
                 + (Math.abs(min1 - min2)) + " minutes");
